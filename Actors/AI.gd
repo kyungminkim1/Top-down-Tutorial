@@ -26,6 +26,8 @@ func _process(delta):
 		State.PATROL:
 			if not patrol_location_reached:
 				actor.move_and_slide(actor_velocity)
+				var angle_to_patrol = actor.global_position.direction_to(patrol_location).angle()
+				actor.rotation = lerp(actor.rotation, angle_to_patrol, 0.1)
 				if actor.global_position.distance_to(patrol_location) < 5:
 					patrol_location_reached = true
 					actor_velocity = Vector2.ZERO
