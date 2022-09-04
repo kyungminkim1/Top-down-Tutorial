@@ -20,8 +20,10 @@ func _process(delta):
 			pass
 		State.ENGAGE:
 			if player != null and weapon != null:
-				actor.rotation = lerp(actor.rotation, actor.global_position.direction_to(player.global_position).angle(), 0.1)
-				weapon.shoot()
+				var angle_to_player = actor.global_position.direction_to(player.global_position).angle()
+				actor.rotation = lerp(actor.rotation, angle_to_player, 0.1)
+				if abs(actor.rotation - angle_to_player) < 0.1:
+					weapon.shoot()
 			else:
 				print("Error: Enemy in engage state but no player/weapon found")
 		_:
