@@ -84,4 +84,4 @@ func _on_PatrolTimer_timeout():
 	var random_y = rand_range(-patrol_range, patrol_range)
 	patrol_location = Vector2(random_x, random_y) + origin
 	patrol_location_reached = false
-	actor_velocity = actor.global_position.direction_to(patrol_location) * 100
+	actor_velocity = actor.velocity_toward(patrol_location)
