@@ -50,3 +50,9 @@ func _on_PlayerDetectionZone_body_entered(body):
 		set_state(State.ENGAGE)
 		player = body
 		print("enemy found player!")
+
+
+func _on_PlayerDetectionZone_body_exited(body):
+	if player and body == player:
+		set_state(State.PATROL)
+		player = null
