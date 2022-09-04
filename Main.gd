@@ -4,4 +4,5 @@ onready var player: Player = $Player
 onready var bullet_manager = $BulletManager
 
 func _ready():
+	randomize()
 	GlobalSignals.connect("bullet_fired", bullet_manager, "handle_spawned_bullet")
