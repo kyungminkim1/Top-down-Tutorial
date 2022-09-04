@@ -29,16 +29,15 @@ func _physics_process(delta):
 		State.PATROL:
 			if not patrol_location_reached:
 				actor.move_and_slide(actor_velocity)
-				var angle_to_patrol = actor.global_position.direction_to(patrol_location).angle()
-				actor.rotation = lerp(actor.rotation, angle_to_patrol, 0.1)
+				actor.rotate_toward(patrol_location)
 				if actor.global_position.distance_to(patrol_location) < 5:
 					patrol_location_reached = true
 					actor_velocity = Vector2.ZERO
 					patrol_timer.start()
 		State.ENGAGE:
 			if player != null and weapon != null:
+				actor.rotate_toward(player.global_position)
 				var angle_to_player = actor.global_position.direction_to(player.global_position).angle()
-				actor.rotation = lerp(actor.rotation, angle_to_player, 0.1)
 				if abs(actor.rotation - angle_to_player) < 0.1:
 					weapon.shoot()
 			else:
