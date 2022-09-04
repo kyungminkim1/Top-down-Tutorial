@@ -10,7 +10,7 @@ enum State {
 onready var player_detection_zone = $PlayerDetectionZone
 onready var patrol_timer = $PatrolTimer
 
-var current_state: int = State.PATROL setget set_state
+var current_state: int = -1 setget set_state
 var actor: KinematicBody2D = null
 var player: Player = null
 var weapon: Weapon = null
@@ -21,7 +21,10 @@ var patrol_location = Vector2.ZERO
 var patrol_location_reached: bool = false
 var actor_velocity: Vector2 = Vector2.ZERO
 
-func _process(delta):
+func _ready():
+	set_state(State.PATROL)
+
+func _physics_process(delta):
 	match current_state:
 		State.PATROL:
 			if not patrol_location_reached:
@@ -55,7 +58,7 @@ func set_state(new_state: int):
 	if new_state == current_state:
 		return
 	if new_state == State.PATROL:
-		origin = actor.global_position
+		origin = global_position
 		patrol_timer.start()
 		patrol_location_reached = true
 	
