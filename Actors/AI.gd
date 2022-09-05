@@ -12,7 +12,7 @@ onready var patrol_timer = $PatrolTimer
 
 var current_state: int = -1 setget set_state
 var actor: KinematicBody2D = null
-var player: Player = null
+var target: Player = null
 var weapon: Weapon = null
 
 # PATROL STATE VARIABLES
@@ -35,13 +35,13 @@ func _physics_process(delta):
 					actor_velocity = Vector2.ZERO
 					patrol_timer.start()
 		State.ENGAGE:
-			if player != null and weapon != null:
-				actor.rotate_toward(player.global_position)
-				var angle_to_player = actor.global_position.direction_to(player.global_position).angle()
+			if target != null and weapon != null:
+				actor.rotate_toward(target.global_position)
+				var angle_to_player = actor.global_position.direction_to(target.global_position).angle()
 				if abs(actor.rotation - angle_to_player) < 0.1:
 					weapon.shoot()
 			else:
-				print("Error: Enemy in engage state but no player/weapon found")
+				print("Error: Enemy in engage state but no target/weapon found")
 		_:
 			print("Error: Enemy has entered state that doesn't exist")
 
@@ -64,20 +64,6 @@ func set_state(new_state: int):
 	current_state = new_state
 	emit_signal("state_changed", current_state)
 
-
-func _on_PlayerDetectionZone_body_entered(body):
-	if body.is_in_group("player"):
-		set_state(State.ENGAGE)
-		player = body
-		print("enemy found player!")
-
-
-func _on_PlayerDetectionZone_body_exited(body):
-	if player and body == player:
-		set_state(State.PATROL)
-		player = null
-
-
 func _on_PatrolTimer_timeout():
 	var patrol_range = 50
 	var random_x = rand_range(-patrol_range, patrol_range)
@@ -85,3 +71,16 @@ func _on_PatrolTimer_timeout():
 	patrol_location = Vector2(random_x, random_y) + origin
 	patrol_location_reached = false
 	actor_velocity = actor.velocity_toward(patrol_location)
+
+
+func _on_DetectionZone_body_entered(body):
+	if body.is_in_group("player"):
+		set_state(State.ENGAGE)
+		target = body
+		print("enemy found target!")
+
+func _on_DetectionZone_body_exited(body):
+	if target and body == target:
+		set_state(State.PATROL)
+		target = null
+
