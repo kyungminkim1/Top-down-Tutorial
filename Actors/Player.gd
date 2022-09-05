@@ -5,6 +5,7 @@ export var speed = 100
 
 onready var health_stat = $Health
 onready var weapon = $Weapon
+onready var team = $Team
 
 func _physics_process(delta):
 	# This is a form of static typing
@@ -38,6 +39,9 @@ func _unhandled_input(event):
 #		print("player has shot")
 		weapon.shoot()
 		
+
+func get_team():
+	return team.team
 
 func handle_hit():
 	health_stat.health -= 10
