@@ -5,4 +5,4 @@ enum TeamName {
 	ENEMY
 }
 
-export (int) var team = TeamName.PLAYER
+export (TeamName) var team = TeamName.PLAYER
