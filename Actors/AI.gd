@@ -12,7 +12,7 @@ onready var patrol_timer = $PatrolTimer
 
 var current_state: int = -1 setget set_state
 var actor: KinematicBody2D = null
-var target: Player = null
+var target: KinematicBody2D = null
 var weapon: Weapon = null
 
 # PATROL STATE VARIABLES
