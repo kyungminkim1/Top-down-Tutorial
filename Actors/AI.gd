@@ -14,6 +14,7 @@ var current_state: int = -1 setget set_state
 var actor: KinematicBody2D = null
 var target: KinematicBody2D = null
 var weapon: Weapon = null
+var team: int = -1
 
 # PATROL STATE VARIABLES
 var origin: Vector2 = Vector2.ZERO
@@ -49,9 +50,10 @@ func _physics_process(delta):
 # It allows a node to communicate with its 'sibling' (in this case Weapon)
 # Note how signals are not utilised, instead references are passed
 
-func initialize(actor, weapon: Weapon):
+func initialize(actor: KinematicBody2D, weapon: Weapon, team: int):
 	self.actor = actor
 	self.weapon = weapon
+	self.team = team
 
 func set_state(new_state: int):
 	if new_state == current_state:
@@ -74,7 +76,7 @@ func _on_PatrolTimer_timeout():
 
 
 func _on_DetectionZone_body_entered(body):
-	if body.is_in_group("player"):
+	if body.has_method("get_team") and body.get_team != team:
 		set_state(State.ENGAGE)
 		target = body
 		print("enemy found target!")

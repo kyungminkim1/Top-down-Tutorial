@@ -8,7 +8,7 @@ onready var team = $Team
 export (int) var speed = 100
 
 func _ready():
-	ai.initialize(self, weapon)
+	ai.initialize(self, weapon, team.team)
 
 func rotate_toward(location: Vector2):
 	rotation = lerp(rotation, global_position.direction_to(location).angle(), 0.1)
