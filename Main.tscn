@@ -13,19 +13,19 @@ script = ExtResource( 2 )
 position = Vector2( 118, 103 )
 
 [node name="Ally" parent="." instance=ExtResource( 5 )]
-position = Vector2( 178, 418 )
+position = Vector2( 76, 237 )
 
 [node name="Ally2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 255, 263 )
+position = Vector2( 285, 89 )
 
 [node name="Ally3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 375, 436 )
+position = Vector2( 582, 110 )
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 396, 270 )
+position = Vector2( 516, 545 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 345, 178 )
+position = Vector2( 906, 487 )
 
 [node name="Enemy3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 274, 503 )
