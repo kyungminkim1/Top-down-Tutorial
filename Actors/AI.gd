@@ -23,7 +23,7 @@ var actor_velocity: Vector2 = Vector2.ZERO
 
 func _ready():
 	set_state(State.PATROL)
-	weapon.connect("weapon_out_of_ammo", self, "handle_reload")
+	
 
 func _physics_process(delta):
 	match current_state:
@@ -54,6 +54,8 @@ func initialize(actor: KinematicBody2D, weapon: Weapon, team: int):
 	self.actor = actor
 	self.weapon = weapon
 	self.team = team
+	
+	weapon.connect("weapon_out_of_ammo", self, "handle_reload")
 
 func set_state(new_state: int):
 	if new_state == current_state:
