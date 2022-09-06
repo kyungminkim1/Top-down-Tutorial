@@ -7,7 +7,6 @@ enum State {
 	ENGAGE
 }
 
-onready var player_detection_zone = $PlayerDetectionZone
 onready var patrol_timer = $PatrolTimer
 
 var current_state: int = -1 setget set_state
