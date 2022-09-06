@@ -5,6 +5,9 @@ export (PackedScene) var Bullet
 
 var team: int = -1
 
+var max_ammo: int = 5
+var current_ammo: int = max_ammo
+
 onready var end_of_gun = $EndOfGun
 onready var gun_direction = $GunDirection
 onready var shoot_cooldown = $ShootCooldown
