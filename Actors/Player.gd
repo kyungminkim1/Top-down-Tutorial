@@ -4,8 +4,11 @@ class_name Player
 export var speed = 100
 
 onready var health_stat = $Health
-onready var weapon = $Weapon
+onready var weapon: Weapon = $Weapon
 onready var team = $Team
+
+func _ready():
+	weapon.initialize(team.team)
 
 func _physics_process(delta):
 	# This is a form of static typing

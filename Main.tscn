@@ -13,22 +13,22 @@ script = ExtResource( 2 )
 position = Vector2( 118, 103 )
 
 [node name="Ally" parent="." instance=ExtResource( 5 )]
-position = Vector2( 248, 267 )
+position = Vector2( 178, 418 )
 
 [node name="Ally2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 508, 155 )
+position = Vector2( 255, 263 )
 
 [node name="Ally3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 375, 436 )
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 856, 513 )
+position = Vector2( 396, 270 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 476, 476 )
+position = Vector2( 345, 178 )
 
 [node name="Enemy3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 388, 570 )
+position = Vector2( 274, 503 )
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource( 3 )

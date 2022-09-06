@@ -33,6 +33,7 @@ position = Vector2( 24, 12 )
 script = ExtResource( 5 )
 
 [node name="DetectionZone" type="Area2D" parent="AI"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AI/DetectionZone"]
 shape = SubResource( 2 )
