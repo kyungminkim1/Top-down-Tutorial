@@ -52,6 +52,7 @@ version_control_plugin_name="GitAPI"
 [global]
 
 display=false
+plugin=false
 
 [gui]
 
