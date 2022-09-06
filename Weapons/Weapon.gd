@@ -25,3 +25,4 @@ func shoot():
 				end_of_gun.global_position, direction)
 		shoot_cooldown.start()
 		muzzle_flash_anim.play("muzzle_flash")
+		current_ammo -= 1
