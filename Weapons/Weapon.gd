@@ -31,7 +31,7 @@ func shoot():
 		emit_signal("weapon_out_of_ammo")
 
 func start_reload():
-	animation_players.start("reload")
+	animation_player.start("reload")
 
 # Adding '_' in front of a method signifies this method shouldn't
 # be called outside of the script i.e. a private method
