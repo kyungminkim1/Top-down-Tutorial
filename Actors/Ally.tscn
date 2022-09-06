@@ -13,7 +13,7 @@ extents = Vector2( 18.5, 21.25 )
 [sub_resource type="CircleShape2D" id=2]
 radius = 160.05
 
-[node name="Enemy" type="KinematicBody2D" groups=["enemy"]]
+[node name="Ally" type="KinematicBody2D" groups=["enemy"]]
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -22,7 +22,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 352, 176, 38, 44 )
+region_rect = Rect2( 348, 0, 40, 44 )
 
 [node name="Health" parent="." instance=ExtResource( 2 )]
 
@@ -42,7 +42,6 @@ wait_time = 3.0
 one_shot = true
 
 [node name="Team" parent="." instance=ExtResource( 6 )]
-team = 1
 
 [connection signal="body_entered" from="AI/DetectionZone" to="AI" method="_on_DetectionZone_body_entered"]
 [connection signal="body_exited" from="AI/DetectionZone" to="AI" method="_on_DetectionZone_body_exited"]

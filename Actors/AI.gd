@@ -79,7 +79,7 @@ func _on_DetectionZone_body_entered(body):
 	if body.has_method("get_team") and body.get_team() != team:
 		set_state(State.ENGAGE)
 		target = body
-		print("enemy found target!")
+		print("Team ", body.get_team() , " found target!")
 
 func _on_DetectionZone_body_exited(body):
 	if target and body == target:
