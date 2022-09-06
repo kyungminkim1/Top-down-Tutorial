@@ -43,6 +43,9 @@ func _unhandled_input(event):
 		weapon.shoot()
 		
 
+func reload():
+	weapon.start_reload()
+
 func get_team():
 	return team.team
 
