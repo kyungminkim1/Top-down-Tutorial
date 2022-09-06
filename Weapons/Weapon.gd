@@ -13,7 +13,7 @@ var current_ammo: int = max_ammo
 onready var end_of_gun = $EndOfGun
 onready var gun_direction = $GunDirection
 onready var shoot_cooldown = $ShootCooldown
-onready var muzzle_flash_anim = $MuzzleFlashAnim
+onready var animation_player = $AnimationPlayer
 
 func initialize(team: int):
 	self.team = team
@@ -26,12 +26,12 @@ func shoot():
 		GlobalSignals.emit_signal("bullet_fired", bullet_instance, team,
 				end_of_gun.global_position, direction)
 		shoot_cooldown.start()
-		muzzle_flash_anim.play("muzzle_flash")
+		animation_player.play("muzzle_flash")
 		current_ammo -= 1
 		emit_signal("weapon_out_of_ammo")
 
 func start_reload():
-	pass
+	animation_player.start("reload")
 
 # Adding '_' in front of a method signifies this method shouldn't
 # be called outside of the script i.e. a private method
