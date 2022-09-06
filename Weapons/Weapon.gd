@@ -1,6 +1,8 @@
 extends Node2D
 class_name Weapon
 
+signal weapon_out_of_ammo
+
 export (PackedScene) var Bullet
 
 var team: int = -1
@@ -17,7 +19,7 @@ func initialize(team: int):
 	self.team = team
 
 func shoot():
-	if shoot_cooldown.is_stopped() and Bullet != null:
+	if current_ammo != 0 and shoot_cooldown.is_stopped() and Bullet != null:
 		var bullet_instance = Bullet.instance()
 		var direction = end_of_gun.global_position.\
 				direction_to(gun_direction.global_position).normalized()
@@ -26,3 +28,12 @@ func shoot():
 		shoot_cooldown.start()
 		muzzle_flash_anim.play("muzzle_flash")
 		current_ammo -= 1
+		emit_signal("weapon_out_of_ammo")
+
+func start_reload():
+	pass
+
+# Adding '_' in front of a method signifies this method shouldn't
+# be called outside of the script i.e. a private method
+func _stop_reload():
+	current_ammo = max_ammo

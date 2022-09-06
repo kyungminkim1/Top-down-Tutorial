@@ -23,6 +23,7 @@ var actor_velocity: Vector2 = Vector2.ZERO
 
 func _ready():
 	set_state(State.PATROL)
+	weapon.connect("weapon_out_of_ammo", self, "handle_reload")
 
 func _physics_process(delta):
 	match current_state:
@@ -64,6 +65,9 @@ func set_state(new_state: int):
 	
 	current_state = new_state
 	emit_signal("state_changed", current_state)
+
+func handle_reload():
+	weapon.start_reload()
 
 func _on_PatrolTimer_timeout():
 	var patrol_range = 50
