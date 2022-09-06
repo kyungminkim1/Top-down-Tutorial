@@ -41,7 +41,8 @@ func _unhandled_input(event):
 	if event.is_action_released("shoot"):
 #		print("player has shot")
 		weapon.shoot()
-		
+	if event.is_action_released("reload"):
+		weapon.start_reload()
 
 func reload():
 	weapon.start_reload()
